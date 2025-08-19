@@ -3,35 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>渺逸</title>
+    <title>渺逸的知识库</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>渺逸大王是无敌的</h1>
+        <h1>渺逸的个人知识库</h1>
+        <nav>
+            <ul>
+                <li><a href="#links">链接分享</a></li>
+                <li><a href="#photos">图片收藏</a></li>
+                <li><a href="#thoughts">个人感想</a></li>
+                <li><a href="#files">文件资料</a></li>
+            </ul>
+        </nav>
     </header>
     <main>
-        <section class="links">
+        <section id="links" class="links">
             <h2>链接分享</h2>
             <ul>
                 <li><a href="https://www.shadiao.pro/" target="_blank">沙雕网站</a> - 各种好玩的小游戏和生成器</li>
                 <li><a href="https://picrew.me/" target="_blank">动漫捏脸</a> - 自己动手捏一个好看的动漫人物</li>
             </ul>
         </section>
-        <section class="photos">
-            <h2>好看照片</h2>
+        <section id="photos" class="photos">
+            <h2>图片收藏</h2>
             <div class="image-gallery">
-                <img src="images/landscape.png">
-                <img src="images/panda1.jpeg">
-                <img src="images/panda2.jpeg">
-                <img src="images/seal.webp">
-                <img src="images/food.jpg">
+                <img src="images/landscape.png" alt="风景">
+                <img src="images/panda1.jpeg" alt="熊猫1">
+                <img src="images/panda2.jpeg" alt="熊猫2">
+                <img src="images/seal.webp" alt="海豹">
+                <img src="images/food.jpg" alt="美食">
             </div>
+        </section>
+        <section id="thoughts" class="thoughts">
+            <h2>个人感想</h2>
+            <div id="thoughts-content"></div>
+        </section>
+        <section id="files" class="files">
+            <h2>文件资料</h2>
+            <ul>
+                <li><a href="#" target="_blank">示例文件1.pdf</a> - 这是一个示例PDF文件</li>
+                <li><a href="#" target="_blank">示例文件2.docx</a> - 这是一个示例Word文件</li>
+            </ul>
         </section>
     </main>
     <footer>
         <p>&copy; 渺渺逸喵</p>
     </footer>
+    <script src="script.js"></script>
 </body>
 </html>
 
