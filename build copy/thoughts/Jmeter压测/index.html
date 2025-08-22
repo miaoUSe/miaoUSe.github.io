@@ -1,0 +1,777 @@
+<!doctype html>
+<html lang="zh-Hans" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-thoughts/Jmeter压测" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.8.1">
+<title data-rh="true">我的第一篇随笔 | 渺逸的知识库</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://miaouse.github.io/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://miaouse.github.io/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://miaouse.github.io/thoughts/Jmeter压测"><meta data-rh="true" property="og:locale" content="zh_Hans"><meta data-rh="true" property="og:locale:alternate" content="en"><meta data-rh="true" name="docusaurus_locale" content="zh-Hans"><meta data-rh="true" name="docsearch:language" content="zh-Hans"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="我的第一篇随笔 | 渺逸的知识库"><meta data-rh="true" name="description" content="JMeter 10万并发压力负载测试操作指南"><meta data-rh="true" property="og:description" content="JMeter 10万并发压力负载测试操作指南"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://miaouse.github.io/thoughts/Jmeter压测"><link data-rh="true" rel="alternate" href="https://miaouse.github.io/thoughts/Jmeter压测" hreflang="zh-Hans"><link data-rh="true" rel="alternate" href="https://miaouse.github.io/en/thoughts/Jmeter压测" hreflang="en"><link data-rh="true" rel="alternate" href="https://miaouse.github.io/thoughts/Jmeter压测" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"个人感想","item":"https://miaouse.github.io/category/个人感想"},{"@type":"ListItem","position":2,"name":"我的第一篇随笔","item":"https://miaouse.github.io/thoughts/Jmeter压测"}]}</script><link rel="stylesheet" href="/assets/css/styles.f56dc3da.css">
+<script src="/assets/js/runtime~main.05f7ab17.js" defer="defer"></script>
+<script src="/assets/js/main.993cd4ed.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t="light";var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",e||t),document.documentElement.setAttribute("data-theme-choice",e||t)}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/img/logo.svg"><div role="region" aria-label="跳到主要内容"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">跳到主要内容</a></div><nav aria-label="主导航" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="切换导航栏" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo.svg" alt="My Site Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/logo.svg" alt="My Site Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">渺逸的知识库</b></a><a class="navbar__item navbar__link" href="/links">链接分享</a><a class="navbar__item navbar__link" href="/photos">图片收藏</a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/thoughts">个人感想</a><a class="navbar__item navbar__link" href="/files">文件资料</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="切换浅色/暗黑模式（当前为system mode）"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="回到顶部" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="文档侧边栏" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/links/">链接分享</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/photos/">图片收藏</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" href="/category/个人感想">个人感想</a><button aria-label="折叠侧边栏分类 &#x27;个人感想&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/thoughts/Jmeter压测">我的第一篇随笔</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/thoughts/">我的第二篇随笔</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/thoughts/build同步">我的第三篇随笔</a></li></ul></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/files/">文件资料</a></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="页面路径"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="主页面" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/category/个人感想"><span>个人感想</span></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">我的第一篇随笔</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">本页总览</button></div><div class="theme-doc-markdown markdown"><header><h1>JMeter 10万并发压力负载测试操作指南</h1></header>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="1-jmeter-分布式环境搭建指导">1. JMeter 分布式环境搭建指导<a href="#1-jmeter-分布式环境搭建指导" class="hash-link" aria-label="1. JMeter 分布式环境搭建指导的直接链接" title="1. JMeter 分布式环境搭建指导的直接链接">​</a></h2>
+<p>针对 10 万并发量级的压力测试，单台 JMeter 机器往往难以支撑如此大的负载。因此，采用 JMeter 分布式测试是实现高并发测试的关键。分布式测试允许您使用多台机器（称为 Slave 或 Agent）来生成负载，并将测试结果汇总到一台主控机（Master）上进行管理和分析。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="11-分布式测试原理">1.1 分布式测试原理<a href="#11-分布式测试原理" class="hash-link" aria-label="1.1 分布式测试原理的直接链接" title="1.1 分布式测试原理的直接链接">​</a></h3>
+<p>JMeter 分布式测试的基本原理是：一台 Master 机器负责发送测试计划给多台 Slave 机器，Slave 机器接收到测试计划后，各自执行测试并生成负载，然后将测试结果回传给 Master 机器。Master 机器负责汇总所有 Slave 机器的测试结果，并生成最终的测试报告。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="12-环境准备">1.2 环境准备<a href="#12-环境准备" class="hash-link" aria-label="1.2 环境准备的直接链接" title="1.2 环境准备的直接链接">​</a></h3>
+<p>在搭建 JMeter 分布式环境之前，请确保所有参与测试的机器（Master 和 Slave）满足以下条件：</p>
+<ul>
+<li><strong>操作系统：</strong> 推荐使用 Linux 系统（如 Ubuntu、CentOS），因为 Linux 在高并发场景下性能更优，且资源消耗相对较低。Windows 系统也可以，但可能在高并发下表现不佳。</li>
+<li><strong>Java 环境：</strong> 所有机器都需要安装相同版本且兼容的 Java Development Kit (JDK)，建议使用 JDK 8 或更高版本。JMeter 是基于 Java 开发的，因此 Java 环境是必不可少的。<!-- -->
+<ul>
+<li><strong>验证 Java 安装：</strong> 在命令行中运行 <code>java -version</code> 和 <code>javac -version</code>，确保输出正确的 Java 版本信息。</li>
+</ul>
+</li>
+<li><strong>JMeter 安装：</strong> 所有机器都需要安装相同版本且完整的 JMeter。建议下载最新稳定版的 JMeter。<!-- -->
+<ul>
+<li><strong>验证 JMeter 安装：</strong> 在 JMeter 安装目录的 <code>bin</code> 目录下运行 <code>./jmeter -v</code> (Linux) 或 <code>jmeter.bat -v</code> (Windows)，确保输出正确的 JMeter 版本信息。</li>
+</ul>
+</li>
+<li><strong>网络连通性：</strong> Master 机器和所有 Slave 机器之间必须能够相互通信。确保防火墙已关闭或已配置相应的入站/出站规则，允许 JMeter 默认端口（1099）的通信。<!-- -->
+<ul>
+<li><strong>验证网络连通性：</strong> 可以使用 <code>ping</code> 命令测试机器间的连通性，使用 <code>telnet &lt;IP&gt; 1099</code> 命令测试端口是否开放。</li>
+</ul>
+</li>
+<li><strong>时钟同步：</strong> 所有参与测试的机器时间必须保持同步，以避免测试结果的时间戳混乱，影响结果分析的准确性。可以使用 NTP 服务进行时间同步。</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="13-搭建步骤">1.3 搭建步骤<a href="#13-搭建步骤" class="hash-link" aria-label="1.3 搭建步骤的直接链接" title="1.3 搭建步骤的直接链接">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="131-配置-slave-机器">1.3.1 配置 Slave 机器<a href="#131-配置-slave-机器" class="hash-link" aria-label="1.3.1 配置 Slave 机器的直接链接" title="1.3.1 配置 Slave 机器的直接链接">​</a></h4>
+<p>在每台 Slave 机器上，需要进行以下配置：</p>
+<ol>
+<li>
+<p><strong>修改 <code>jmeter.properties</code> 文件：</strong></p>
+<ul>
+<li>打开 JMeter 安装目录下的 <code>bin/jmeter.properties</code> 文件。</li>
+<li>找到 <code>server_port</code> 参数，确保其值为 <code>1099</code>（JMeter 默认的 RMI 端口）。如果该端口被占用，可以修改为其他未被占用的端口，但需要确保 Master 机器也配置相同的端口。</li>
+<li>找到 <code>server.rmi.ssl.disable</code> 参数，将其设置为 <code>true</code>，禁用 SSL，简化配置（生产环境建议开启 SSL）。<!-- -->
+<div class="language-properties codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-properties codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">server_port=1099</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">server.rmi.ssl.disable=true</span><br></span></code></pre></div></div>
+</li>
+<li>保存并关闭文件。</li>
+</ul>
+</li>
+<li>
+<p><strong>启动 JMeter Server：</strong></p>
+<ul>
+<li>在 JMeter 安装目录的 <code>bin</code> 目录下，运行以下命令启动 JMeter Server：<!-- -->
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">./jmeter-server -Djava.rmi.server.hostname=&lt;Slave 机器 IP 地址&gt;</span><br></span></code></pre></div></div>
+<ul>
+<li>将 <code>&lt;Slave 机器 IP 地址&gt;</code> 替换为当前 Slave 机器的实际 IP 地址。这个参数非常重要，它告诉 JMeter Server 在 RMI 注册表中注册哪个 IP 地址，以便 Master 机器能够找到它。</li>
+</ul>
+</li>
+<li>启动成功后，您会看到类似“Created remote object: UnicastServerRef”的输出信息，表示 JMeter Server 已成功启动并监听 1099 端口。</li>
+</ul>
+</li>
+</ol>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="132-配置-master-机器">1.3.2 配置 Master 机器<a href="#132-配置-master-机器" class="hash-link" aria-label="1.3.2 配置 Master 机器的直接链接" title="1.3.2 配置 Master 机器的直接链接">​</a></h4>
+<p>在 Master 机器上，需要进行以下配置：</p>
+<ol>
+<li>
+<p><strong>修改 <code>jmeter.properties</code> 文件：</strong></p>
+<ul>
+<li>打开 JMeter 安装目录下的 <code>bin/jmeter.properties</code> 文件。</li>
+<li>找到 <code>remote_hosts</code> 参数，将其值设置为所有 Slave 机器的 IP 地址，多个 IP 地址之间用逗号分隔。<!-- -->
+<div class="language-properties codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-properties codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">remote_hosts=192.168.1.101,192.168.1.102,192.168.1.103</span><br></span></code></pre></div></div>
+<ul>
+<li>将 <code>192.168.1.101</code>、<code>192.168.1.102</code>、<code>192.168.1.103</code> 替换为您的实际 Slave 机器 IP 地址。</li>
+</ul>
+</li>
+<li>确保 <code>server.rmi.ssl.disable</code> 参数也设置为 <code>true</code>，与 Slave 机器保持一致。</li>
+<li>保存并关闭文件。</li>
+</ul>
+</li>
+<li>
+<p><strong>启动 JMeter GUI：</strong></p>
+<ul>
+<li>在 JMeter 安装目录的 <code>bin</code> 目录下，运行 <code>./jmeter</code> (Linux) 或 <code>jmeter.bat</code> (Windows) 启动 JMeter GUI 界面。</li>
+</ul>
+</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="14-验证分布式环境">1.4 验证分布式环境<a href="#14-验证分布式环境" class="hash-link" aria-label="1.4 验证分布式环境的直接链接" title="1.4 验证分布式环境的直接链接">​</a></h3>
+<ol>
+<li>在 JMeter GUI 界面中，点击菜单栏的 <strong>Run (运行)</strong> -&gt; <strong>Remote Start (远程启动)</strong>，您应该能看到 <code>remote_hosts</code> 中配置的所有 Slave 机器的 IP 地址。</li>
+<li>选择一个或多个 Slave 机器，或者选择 <strong>Start All (启动所有)</strong>，然后加载您的测试计划 (JMX 文件) 并运行。如果一切配置正确，测试计划将分发到所有选定的 Slave 机器上执行。</li>
+<li>观察 JMeter GUI 界面中的监听器（如“汇总报告”或“聚合报告”），您会看到来自所有 Slave 机器的测试结果被汇总显示。</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="15-常见问题与排查">1.5 常见问题与排查<a href="#15-常见问题与排查" class="hash-link" aria-label="1.5 常见问题与排查的直接链接" title="1.5 常见问题与排查的直接链接">​</a></h3>
+<ul>
+<li><strong>连接超时或无法连接：</strong>
+<ul>
+<li>检查防火墙设置，确保 JMeter 默认端口（1099）在 Master 和 Slave 机器之间是开放的。</li>
+<li>检查 <code>jmeter.properties</code> 文件中的 <code>server_port</code> 和 <code>remote_hosts</code> 配置是否正确。</li>
+<li>确保 Slave 机器启动 JMeter Server 时，<code>java.rmi.server.hostname</code> 参数设置的是 Slave 机器的实际 IP 地址，而不是 127.0.0.1 或 localhost。</li>
+<li>检查网络连通性，确保 Master 和 Slave 机器之间可以相互 ping 通。</li>
+</ul>
+</li>
+<li><strong>测试结果不准确或不完整：</strong>
+<ul>
+<li>检查所有机器的时钟是否同步。</li>
+<li>确保所有 Slave 机器上的 JMeter 和 JDK 版本一致。</li>
+<li>检查 JMeter Server 启动时是否有错误信息。</li>
+</ul>
+</li>
+<li><strong>JMeter Server 启动失败：</strong>
+<ul>
+<li>检查 Java 环境是否正确安装和配置。</li>
+<li>检查 1099 端口是否被其他程序占用。可以使用 <code>netstat -ano | findstr 1099</code> (Windows) 或 <code>netstat -anp | grep 1099</code> (Linux) 命令查看端口占用情况。</li>
+</ul>
+</li>
+</ul>
+<p>通过以上步骤，您应该能够成功搭建 JMeter 分布式测试环境</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="2-jmeter-脚本创建与调试指导">2. JMeter 脚本创建与调试指导<a href="#2-jmeter-脚本创建与调试指导" class="hash-link" aria-label="2. JMeter 脚本创建与调试指导的直接链接" title="2. JMeter 脚本创建与调试指导的直接链接">​</a></h2>
+<p>JMeter 脚本是压力测试的核心，它定义了用户行为和测试场景。一个高质量的 JMeter 脚本能够准确模拟真实用户行为，并有效支撑高并发测试。本节将详细介绍 JMeter 脚本的创建、参数化、关联、断言以及调试过程。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="21-脚本录制与编写">2.1 脚本录制与编写<a href="#21-脚本录制与编写" class="hash-link" aria-label="2.1 脚本录制与编写的直接链接" title="2.1 脚本录制与编写的直接链接">​</a></h3>
+<p>JMeter 提供了多种方式来创建测试脚本，最常用的是 HTTP(S) Test Script Recorder（HTTP(S) 测试脚本录制器）和手动编写。</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="211-https-测试脚本录制器">2.1.1 HTTP(S) 测试脚本录制器<a href="#211-https-测试脚本录制器" class="hash-link" aria-label="2.1.1 HTTP(S) 测试脚本录制器的直接链接" title="2.1.1 HTTP(S) 测试脚本录制器的直接链接">​</a></h4>
+<p>录制器适用于 Web 应用的测试，它可以捕获浏览器与服务器之间的 HTTP/HTTPS 请求，并自动生成 JMeter 脚本。这对于快速创建基本脚本非常有用。</p>
+<p><strong>步骤：</strong></p>
+<ol>
+<li><strong>添加 HTTP(S) Test Script Recorder：</strong> 在测试计划下，右键点击 <strong>Test Plan (测试计划)</strong> -&gt; <strong>Add (添加)</strong> -&gt; <strong>Non-Test Elements (非测试元件)</strong> -&gt; <strong>HTTP(S) Test Script Recorder (HTTP(S) 测试脚本录制器)</strong>。</li>
+<li><strong>配置全局 HTTP 代理：</strong>
+<ul>
+<li>在 JMeter 的 HTTP(S) Test Script Recorder 中，设置 <strong>Port (端口)</strong>，例如 <code>8888</code>。</li>
+<li>在您的浏览器中配置代理，将 HTTP 和 HTTPS 代理都设置为 JMeter 所在机器的 IP 地址和 JMeter 中设置的端口（例如 <code>localhost:8888</code>）。</li>
+<li>对于 HTTPS 请求，JMeter 会生成一个临时证书。您需要将 JMeter 安装目录 <code>bin</code> 目录下的 <code>ApacheJMeterTemporaryRootCA.crt</code> 证书导入到浏览器或操作系统的信任证书列表中。</li>
+</ul>
+</li>
+<li><strong>启动录制：</strong> 在 HTTP(S) Test Script Recorder 界面，点击 <strong>Start (启动)</strong> 按钮。此时，JMeter 会启动代理服务，开始监听浏览器请求。</li>
+<li><strong>执行业务操作：</strong> 在配置好代理的浏览器中，按照您的测试场景执行业务操作，例如登录、浏览商品、提交订单等。JMeter 会自动捕获这些请求并生成相应的采样器。</li>
+<li><strong>停止录制：</strong> 完成业务操作后，点击 HTTP(S) Test Script Recorder 界面上的 <strong>Stop (停止)</strong> 按钮。</li>
+<li><strong>整理脚本：</strong> 录制完成后，JMeter 会在 <strong>Recording Controller (录制控制器)</strong> 下生成一系列的 HTTP 请求。您需要对这些请求进行整理，删除不必要的请求（如图片、CSS、JS 文件等），并根据业务逻辑进行分组。</li>
+</ol>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="212-手动编写脚本">2.1.2 手动编写脚本<a href="#212-手动编写脚本" class="hash-link" aria-label="2.1.2 手动编写脚本的直接链接" title="2.1.2 手动编写脚本的直接链接">​</a></h4>
+<p>对于接口测试或更复杂的场景，手动编写脚本更为灵活和精确。</p>
+<p><strong>步骤：</strong></p>
+<ol>
+<li><strong>添加线程组 (Thread Group)：</strong> 右键点击 <strong>Test Plan (测试计划)</strong> -&gt; <strong>Add (添加)</strong> -&gt; <strong>Threads (Users) (线程 (用户))</strong> -&gt; <strong>Thread Group (线程组)</strong>。<!-- -->
+<ul>
+<li>配置线程组的 <strong>Number of Threads (用户数)</strong>、<strong>Ramp-up Period (in seconds) (启动时间)</strong> 和 <strong>Loop Count (循环次数)</strong> 或 <strong>Duration (in seconds) (持续时间)</strong>。</li>
+</ul>
+</li>
+<li><strong>添加 HTTP Request (HTTP 请求)：</strong> 在线程组下，右键点击 <strong>Thread Group (线程组)</strong> -&gt; <strong>Add (添加)</strong> -&gt; <strong>Sampler (取样器)</strong> -&gt; <strong>HTTP Request (HTTP 请求)</strong>。<!-- -->
+<ul>
+<li>配置 HTTP 请求的 <strong>Protocol (协议)</strong>、<strong>Server Name or IP (服务器名称或 IP)</strong>、<strong>Port Number (端口号)</strong>、<strong>Method (方法)</strong>（GET/POST等）、<strong>Path (路径)</strong>、<strong>Parameters (参数)</strong>、<strong>Body Data (请求体数据)</strong> 等。</li>
+</ul>
+</li>
+<li><strong>添加 HTTP Header Manager (HTTP 信息头管理器)：</strong> 对于需要自定义请求头的场景（如 Content-Type、Authorization 等），在 HTTP Request 下添加 HTTP Header Manager。</li>
+<li><strong>添加监听器 (Listeners)：</strong> 在测试计划或线程组下添加监听器，如 <strong>View Results Tree (查看结果树)</strong>、<strong>Summary Report (汇总报告)</strong>、<strong>Aggregate Report (聚合报告)</strong> 等，用于查看测试结果。</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="22-脚本增强">2.2 脚本增强<a href="#22-脚本增强" class="hash-link" aria-label="2.2 脚本增强的直接链接" title="2.2 脚本增强的直接链接">​</a></h3>
+<p>为了模拟真实用户行为和处理动态数据，需要对脚本进行增强。</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="221-参数化-parameterization">2.2.1 参数化 (Parameterization)<a href="#221-参数化-parameterization" class="hash-link" aria-label="2.2.1 参数化 (Parameterization)的直接链接" title="2.2.1 参数化 (Parameterization)的直接链接">​</a></h4>
+<p>参数化是将脚本中变化的参数（如用户名、密码、商品 ID、订单号等）替换为变量，从而使每次请求使用不同的数据。这对于模拟大量不同用户或不同场景非常重要。</p>
+<p><strong>常用方法：</strong></p>
+<ol>
+<li><strong>CSV Data Set Config (CSV 数据文件设置)：</strong>
+<ul>
+<li><strong>用途：</strong> 从 CSV 文件中读取测试数据。适用于大量、结构化的测试数据。</li>
+<li><strong>添加：</strong> 在线程组下，右键点击 <strong>Thread Group (线程组)</strong> -&gt; <strong>Add (添加)</strong> -&gt; <strong>Config Element (配置元件)</strong> -&gt; <strong>CSV Data Set Config (CSV 数据文件设置)</strong>。</li>
+<li><strong>配置：</strong>
+<ul>
+<li><strong>Filename (文件名)：</strong> CSV 文件的路径（可以是相对路径或绝对路径）。</li>
+<li><strong>Variable Names (comma-delimited) (变量名称 (逗号分隔))：</strong> CSV 文件中各列对应的变量名，例如 <code>username,password</code>。</li>
+<li><strong>Delimiter (分隔符)：</strong> CSV 文件中列的分隔符，默认为逗号。</li>
+<li><strong>Recycle on EOF (循环到文件尾)：</strong> 如果设置为 True，当数据读取到文件末尾时，会从头开始循环读取。</li>
+<li><strong>Stop thread on EOF (当文件结束时停止线程)：</strong> 如果设置为 True，当数据读取到文件末尾时，当前线程停止运行。</li>
+<li><strong>Sharing Mode (共享模式)：</strong> 控制数据在线程组或所有线程组之间如何共享。</li>
+</ul>
+</li>
+<li><strong>使用：</strong> 在 HTTP 请求中，使用 <code>${变量名}</code> 的形式引用变量，例如 <code>${username}</code>。</li>
+</ul>
+</li>
+<li><strong>函数助手 (Function Helper Dialog)：</strong>
+<ul>
+<li><strong>用途：</strong> JMeter 提供了多种内置函数，可以生成随机数、随机字符串、时间戳等动态数据。</li>
+<li><strong>打开：</strong> 在 JMeter 菜单栏，点击 <strong>Options (选项)</strong> -&gt; <strong>Function Helper Dialog (函数助手对话框)</strong>。</li>
+<li><strong>常用函数：</strong>
+<ul>
+<li><code>__Random(min,max,)</code>：生成指定范围内的随机整数。</li>
+<li><code>__RandomString(length,chars,)</code>：生成指定长度和字符集的随机字符串。</li>
+<li><code>__time(format,)</code>：生成当前时间戳或指定格式的时间。</li>
+<li><code>__counter(True,)</code>：生成一个递增的计数器。</li>
+</ul>
+</li>
+<li><strong>使用：</strong> 复制生成的函数字符串到 HTTP 请求的参数或请求体中。</li>
+</ul>
+</li>
+</ol>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="222-关联-correlation">2.2.2 关联 (Correlation)<a href="#222-关联-correlation" class="hash-link" aria-label="2.2.2 关联 (Correlation)的直接链接" title="2.2.2 关联 (Correlation)的直接链接">​</a></h4>
+<p>关联是指从上一个请求的响应中提取动态数据（如 Session ID、Token、验证码、订单号等），并将其作为下一个请求的参数。这是模拟真实用户行为的关键，因为许多 Web 应用都会在请求之间传递动态数据。</p>
+<p><strong>常用方法：</strong></p>
+<ol>
+<li><strong>Regular Expression Extractor (正则表达式提取器)：</strong>
+<ul>
+<li><strong>用途：</strong> 使用正则表达式从响应文本中提取数据。</li>
+<li><strong>添加：</strong> 在需要提取数据的 HTTP 请求下，右键点击 <strong>HTTP Request (HTTP 请求)</strong> -&gt; <strong>Add (添加)</strong> -&gt; <strong>Post Processors (后置处理器)</strong> -&gt; <strong>Regular Expression Extractor (正则表达式提取器)</strong>。</li>
+<li><strong>配置：</strong>
+<ul>
+<li><strong>Apply to (应用于)：</strong> 选择应用于主样本、子样本或两者。</li>
+<li><strong>Field to check (要检查的字段)：</strong> 选择响应主体、响应头、URL 等。</li>
+<li><strong>Name of created variable (创建的变量名)：</strong> 提取的数据将存储到这个变量中，例如 <code>session_id</code>。</li>
+<li><strong>Regular Expression (正则表达式)：</strong> 编写用于提取数据的正则表达式。例如，要提取 `sessionId=</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>=&quot;([a-zA-Z0-9]+)&quot;&gt;<code>，其中 </code>([a-zA-Z0-9]+)` 是捕获组。</p>
+<ul>
+<li><strong>Template (模板)：</strong> <code>$1$</code> 表示提取第一个捕获组的内容。</li>
+<li><strong>Match No. (匹配数字)：</strong> 如果有多个匹配，<code>1</code> 表示第一个，<code>-1</code> 表示所有。</li>
+<li><strong>Default Value (默认值)：</strong> 如果没有匹配到，变量的默认值。</li>
+<li><strong>使用：</strong> 在后续的 HTTP 请求中，使用 <code>${session_id}</code> 引用提取到的值。</li>
+</ul>
+<ol start="2">
+<li><strong>JSON Extractor (JSON 提取器)：</strong>
+<ul>
+<li><strong>用途：</strong> 从 JSON 格式的响应中提取数据。适用于 RESTful API 接口。</li>
+<li><strong>添加：</strong> 在需要提取数据的 HTTP 请求下，右键点击 <strong>HTTP Request (HTTP 请求)</strong> -&gt; <strong>Add (添加)</strong> -&gt; <strong>Post Processors (后置处理器)</strong> -&gt; <strong>JSON Extractor (JSON 提取器)</strong>。</li>
+<li><strong>配置：</strong>
+<ul>
+<li><strong>Names of created variables (创建的变量名)：</strong> 提取的数据将存储到这个变量中，例如 <code>token</code>。</li>
+<li><strong>JSON Path expressions (JSON Path 表达式)：</strong> 编写 JSON Path 表达式来定位要提取的数据。例如，<code>$.data.token</code>。</li>
+<li><strong>Match No. (匹配数字)：</strong> 同正则表达式提取器。</li>
+<li><strong>Default Values (默认值)：</strong> 同正则表达式提取器。</li>
+</ul>
+</li>
+<li><strong>使用：</strong> 在后续的 HTTP 请求中，使用 <code>${token}</code> 引用提取到的值。</li>
+</ul>
+</li>
+<li><strong>CSS/JQuery Extractor (CSS/JQuery 提取器)：</strong>
+<ul>
+<li><strong>用途：</strong> 从 HTML 响应中使用 CSS 选择器或 JQuery 语法提取数据。适用于 Web 页面。</li>
+<li><strong>添加：</strong> 在需要提取数据的 HTTP 请求下，右键点击 <strong>HTTP Request (HTTP 请求)</strong> -&gt; <strong>Add (添加)</strong> -&gt; <strong>Post Processors (后置处理器)</strong> -&gt; <strong>CSS/JQuery Extractor (CSS/JQuery 提取器)</strong>。</li>
+<li><strong>配置：</strong>
+<ul>
+<li><strong>Names of created variables (创建的变量名)：</strong> 提取的数据将存储到这个变量中，例如 <code>product_id</code>。</li>
+<li><strong>CSS/JQuery expression (CSS/JQuery 表达式)：</strong> 编写 CSS 选择器或 JQuery 表达式。例如，<code>div.product-item a.buy-button</code>。</li>
+<li><strong>Attribute (属性)：</strong> 要提取的 HTML 元素的属性，例如 <code>href</code> 或 <code>text</code>。</li>
+<li><strong>Match No. (匹配数字)：</strong> 同正则表达式提取器。</li>
+<li><strong>Default Value (默认值)：</strong> 同正则表达式提取器。</li>
+</ul>
+</li>
+<li><strong>使用：</strong> 在后续的 HTTP 请求中，使用 <code>${product_id}</code> 引用提取到的值。</li>
+</ul>
+</li>
+</ol>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="223-断言-assertions">2.2.3 断言 (Assertions)<a href="#223-断言-assertions" class="hash-link" aria-label="2.2.3 断言 (Assertions)的直接链接" title="2.2.3 断言 (Assertions)的直接链接">​</a></h4>
+<p>断言用于验证服务器响应的正确性，确保测试结果符合预期。如果断言失败，JMeter 会将该请求标记为失败。</p>
+<p><strong>常用断言类型：</strong></p>
+<ol>
+<li><strong>Response Assertion (响应断言)：</strong>
+<ul>
+<li><strong>用途：</strong> 验证响应文本、响应代码、响应头等是否包含、匹配或等于预期值。</li>
+<li><strong>添加：</strong> 在需要验证的 HTTP 请求下，右键点击 <strong>HTTP Request (HTTP 请求)</strong> -&gt; <strong>Add (添加)</strong> -&gt; <strong>Assertions (断言)</strong> -&gt; <strong>Response Assertion (响应断言)</strong>。</li>
+<li><strong>配置：</strong>
+<ul>
+<li><strong>Apply to (应用于)：</strong> 选择应用于主样本、子样本或两者。</li>
+<li><strong>Field to Test (要测试的字段)：</strong> 选择响应文本、响应代码、响应信息、响应头等。</li>
+<li><strong>Pattern Matching Rules (模式匹配规则)：</strong> 包含、匹配、等于、非包含、非匹配等。</li>
+<li><strong>Patterns to Test (要测试的模式)：</strong> 输入预期值，例如 <code>200</code>（响应代码）或 <code>&quot;success&quot;:true</code>（响应文本）。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Duration Assertion (持续时间断言)：</strong>
+<ul>
+<li><strong>用途：</strong> 验证请求的响应时间是否在预期范围内。</li>
+<li><strong>添加：</strong> 在需要验证的 HTTP 请求下，右键点击 <strong>HTTP Request (HTTP 请求)</strong> -&gt; <strong>Add (添加)</strong> -&gt; <strong>Assertions (断言)</strong> -&gt; <strong>Duration Assertion (持续时间断言)</strong>。</li>
+<li><strong>配置：</strong>
+<ul>
+<li><strong>Duration in milliseconds (持续时间，毫秒)：</strong> 输入允许的最大响应时间，例如 <code>150</code>。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="224-控制器-controllers">2.2.4 控制器 (Controllers)<a href="#224-控制器-controllers" class="hash-link" aria-label="2.2.4 控制器 (Controllers)的直接链接" title="2.2.4 控制器 (Controllers)的直接链接">​</a></h4>
+<p>控制器用于控制测试计划的逻辑流程，例如循环、条件判断、事务分组等。</p>
+<p><strong>常用控制器类型：</strong></p>
+<ol>
+<li><strong>Loop Controller (循环控制器)：</strong>
+<ul>
+<li><strong>用途：</strong> 使其下的请求或逻辑重复执行指定次数或无限循环。</li>
+<li><strong>添加：</strong> 在线程组下，右键点击 <strong>Thread Group (线程组)</strong> -&gt; <strong>Add (添加)</strong> -&gt; <strong>Logic Controller (逻辑控制器)</strong> -&gt; <strong>Loop Controller (循环控制器)</strong>。</li>
+<li><strong>配置：</strong>
+<ul>
+<li><strong>Loop Count (循环次数)：</strong> 设置循环次数，或勾选 <code>Forever</code> 进行无限循环。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>If Controller (If 控制器)：</strong>
+<ul>
+<li><strong>用途：</strong> 根据条件判断是否执行其下的请求或逻辑。</li>
+<li><strong>添加：</strong> 在线程组下，右键点击 <strong>Thread Group (线程组)</strong> -&gt; <strong>Add (添加)</strong> -&gt; <strong>Logic Controller (逻辑控制器)</strong> -&gt; <strong>If Controller (If 控制器)</strong>。</li>
+<li><strong>配置：</strong>
+<ul>
+<li><strong>Condition (条件)：</strong> 输入条件表达式，例如 <code>${JMeterThread.last_sample_ok}</code>（判断上一个请求是否成功）。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Transaction Controller (事务控制器)：</strong>
+<ul>
+<li><strong>用途：</strong> 将多个请求组合成一个逻辑事务，并计算整个事务的响应时间。</li>
+<li><strong>添加：</strong> 在线程组下，右键点击 <strong>Thread Group (线程组)</strong> -&gt; <strong>Add (添加)</strong> -&gt; <strong>Logic Controller (逻辑控制器)</strong> -&gt; <strong>Transaction Controller (事务控制器)</strong>。</li>
+<li><strong>配置：</strong>
+<ul>
+<li><strong>Generate parent sample (生成父样本)：</strong> 勾选后，事务控制器会生成一个父样本，包含其下所有请求的汇总信息。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="23-脚本调试">2.3 脚本调试<a href="#23-脚本调试" class="hash-link" aria-label="2.3 脚本调试的直接链接" title="2.3 脚本调试的直接链接">​</a></h3>
+<p>脚本调试是确保脚本正确性和稳定性的重要环节。在高并发测试之前，务必在低并发环境下充分调试脚本。</p>
+<ol>
+<li><strong>使用 View Results Tree (查看结果树)：</strong>
+<ul>
+<li>在调试阶段，将 <strong>View Results Tree (查看结果树)</strong> 添加到测试计划中。</li>
+<li>运行脚本，在查看结果树中可以查看每个请求的详细信息，包括请求头、请求体、响应头、响应体、响应时间、断言结果等。</li>
+<li><strong>注意：</strong> 在正式高并发测试时，请禁用或删除 View Results Tree，因为它会消耗大量内存和 CPU 资源，影响施压机的性能。</li>
+</ul>
+</li>
+<li><strong>使用 Debug Sampler (调试取样器)：</strong>
+<ul>
+<li><strong>用途：</strong> 用于查看 JMeter 变量、属性和系统属性的值。</li>
+<li><strong>添加：</strong> 在需要调试的位置，右键点击 <strong>Add (添加)</strong> -&gt; <strong>Sampler (取样器)</strong> -&gt; <strong>Debug Sampler (调试取样器)</strong>。</li>
+<li>运行脚本后，在 View Results Tree 中查看 Debug Sampler 的结果，可以帮助您检查变量是否正确提取和传递。</li>
+</ul>
+</li>
+<li><strong>使用 Log Viewer (日志查看器)：</strong>
+<ul>
+<li>JMeter 的日志文件（<code>jmeter.log</code>）记录了测试运行过程中的详细信息，包括错误、警告和调试信息。</li>
+<li>在 JMeter GUI 界面，点击 <strong>Options (选项)</strong> -&gt; <strong>Log Viewer (日志查看器)</strong> 可以实时查看日志。</li>
+<li>在命令行模式下运行 JMeter 时，日志会输出到控制台或指定的文件中。</li>
+</ul>
+</li>
+<li><strong>逐步执行和断点：</strong>
+<ul>
+<li>JMeter 本身不提供像 IDE 那样的断点调试功能。但可以通过设置线程组的循环次数为 1，并结合 View Results Tree 和 Debug Sampler 进行逐步调试。</li>
+<li>对于复杂的逻辑，可以暂时禁用部分请求或控制器，分步调试。</li>
+</ul>
+</li>
+</ol>
+<p>通过以上脚本创建、增强和调试步骤，您可以构建出健壮且能准确模拟真实用户行为的 JMeter 脚本，为后续的 10 万并发压力测试做好准备。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="3-jmeter-测试执行指导">3. JMeter 测试执行指导<a href="#3-jmeter-测试执行指导" class="hash-link" aria-label="3. JMeter 测试执行指导的直接链接" title="3. JMeter 测试执行指导的直接链接">​</a></h2>
+<p>JMeter 测试执行是压力测试的关键环节，尤其是在 10 万并发量级下，需要充分利用 JMeter 的分布式能力，并采用命令行模式进行测试，以确保测试的稳定性和效率。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="31-测试前检查清单">3.1 测试前检查清单<a href="#31-测试前检查清单" class="hash-link" aria-label="3.1 测试前检查清单的直接链接" title="3.1 测试前检查清单的直接链接">​</a></h3>
+<p>在执行正式的压力测试之前，务必进行以下检查，以确保测试环境和脚本的就绪：</p>
+<ol>
+<li><strong>环境就绪：</strong>
+<ul>
+<li><strong>Master 和 Slave 机器：</strong> 确认所有 Master 和 Slave 机器的 Java 环境和 JMeter 版本一致，且 JMeter Server 已在所有 Slave 机器上成功启动。</li>
+<li><strong>网络连通性：</strong> 确认 Master 和 Slave 机器之间，以及 Slave 机器与被测系统之间网络畅通，防火墙已正确配置。</li>
+<li><strong>时钟同步：</strong> 确认所有参与测试的机器时钟已同步。</li>
+<li><strong>测试环境隔离：</strong> 确认测试环境与生产环境完全隔离，避免相互影响。</li>
+</ul>
+</li>
+<li><strong>脚本就绪：</strong>
+<ul>
+<li><strong>脚本调试：</strong> 确认 JMeter 脚本已在低并发环境下充分调试，所有参数化、关联、断言等都已验证通过。</li>
+<li><strong>监听器禁用：</strong> 在正式测试时，禁用或删除所有图形化监听器（如“查看结果树”），因为它们会消耗大量内存和 CPU 资源，严重影响施压机的性能。只保留“汇总报告”或“聚合报告”等非图形化监听器，或者使用 Backend Listener 将结果发送到外部数据库。</li>
+<li><strong>日志级别：</strong> 将 JMeter 的日志级别设置为 <code>WARN</code> 或 <code>ERROR</code>，减少日志输出量，提高性能。可以在 <code>bin/log4j2.xml</code> 文件中修改。</li>
+</ul>
+</li>
+<li><strong>数据就绪：</strong>
+<ul>
+<li>确认测试数据已准备充分，并已导入到被测系统数据库中。</li>
+<li>确认数据清理和恢复策略已明确，并在测试前执行。</li>
+</ul>
+</li>
+<li><strong>监控就绪：</strong>
+<ul>
+<li>确认 Prometheus、Grafana、ELK Stack 等监控系统已部署并正常运行，能够实时收集被测系统和施压机的各项性能指标。</li>
+<li>确认监控仪表盘已配置，能够直观地展示关键性能数据。</li>
+</ul>
+</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="32-命令行模式执行测试">3.2 命令行模式执行测试<a href="#32-命令行模式执行测试" class="hash-link" aria-label="3.2 命令行模式执行测试的直接链接" title="3.2 命令行模式执行测试的直接链接">​</a></h3>
+<p>在高并发场景下，强烈建议使用命令行模式（非 GUI 模式）执行 JMeter 测试，因为 GUI 模式会消耗大量系统资源，影响测试结果的准确性。</p>
+<p><strong>基本命令格式：</strong></p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">./jmeter -n -t &lt;测试计划文件路径&gt; -l &lt;结果文件路径&gt; -e -o &lt;HTML报告输出目录&gt;</span><br></span></code></pre></div></div>
+<ul>
+<li><code>-n</code>：非 GUI 模式运行 JMeter。</li>
+<li><code>-t &lt;测试计划文件路径&gt;</code>：指定要运行的 JMeter 测试计划文件（.jmx 文件）的路径。</li>
+<li><code>-l &lt;结果文件路径&gt;</code>：指定测试结果文件（.jtl 文件）的路径。这个文件包含了每个请求的详细结果，是后续分析的重要依据。</li>
+<li><code>-e</code>：在测试结束后生成 HTML 报告。</li>
+<li><code>-o &lt;HTML报告输出目录&gt;</code>：指定 HTML 报告的输出目录。该目录必须为空或不存在，JMeter 会自动创建。</li>
+</ul>
+<p><strong>示例：</strong></p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">./jmeter -n -t /path/to/your/test_plan.jmx -l /path/to/results/test_results.jtl -e -o /path/to/html_report</span><br></span></code></pre></div></div>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="33-分布式模式执行测试">3.3 分布式模式执行测试<a href="#33-分布式模式执行测试" class="hash-link" aria-label="3.3 分布式模式执行测试的直接链接" title="3.3 分布式模式执行测试的直接链接">​</a></h3>
+<p>在分布式模式下，Master 机器通过命令行启动测试，并将测试计划分发到所有配置好的 Slave 机器上执行。</p>
+<p><strong>命令格式：</strong></p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">./jmeter -n -t &lt;测试计划文件路径&gt; -l &lt;结果文件路径&gt; -r -R &lt;Slave IP 地址列表&gt; -e -o &lt;HTML报告输出目录&gt;</span><br></span></code></pre></div></div>
+<ul>
+<li><code>-r</code>：远程启动所有在 <code>jmeter.properties</code> 中配置的 Slave 机器。</li>
+<li><code>-R &lt;Slave IP 地址列表&gt;</code>：指定要远程启动的 Slave 机器的 IP 地址列表，多个 IP 地址之间用逗号分隔。例如：<code>-R 192.168.1.101,192.168.1.102</code>。如果 <code>jmeter.properties</code> 中已配置 <code>remote_hosts</code>，则可以省略 <code>-R</code> 参数，只使用 <code>-r</code>。</li>
+</ul>
+<p><strong>示例：</strong></p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">./jmeter -n -t /path/to/your/test_plan.jmx -l /path/to/results/distributed_test_results.jtl -r -R 192.168.1.101,192.168.1.102,192.168.1.103 -e -o /path/to/distributed_html_report</span><br></span></code></pre></div></div>
+<p><strong>注意事项：</strong></p>
+<ul>
+<li><strong>Master 机器不参与施压：</strong> 在分布式测试中，Master 机器主要负责协调和汇总结果，不建议让 Master 机器也参与生成负载，以避免其成为瓶颈。</li>
+<li><strong>测试计划同步：</strong> 确保 Master 机器上的测试计划文件（.jmx）是最新的，因为它会被分发到所有 Slave 机器。</li>
+<li><strong>资源监控：</strong> 在测试执行过程中，密切关注所有 Slave 机器和被测系统的资源使用情况，确保施压机本身不会成为瓶颈。</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="34-测试执行策略">3.4 测试执行策略<a href="#34-测试执行策略" class="hash-link" aria-label="3.4 测试执行策略的直接链接" title="3.4 测试执行策略的直接链接">​</a></h3>
+<p>针对 10 万并发量，建议采用以下测试执行策略：</p>
+<ol>
+<li><strong>分阶段加载：</strong>
+<ul>
+<li>不要一次性加载 10 万并发用户。建议采用阶梯式加载，例如从 1 万、3 万、5 万、8 万，最终达到 10 万。</li>
+<li>每个阶段持续一定时间（例如 15-30 分钟），观察系统性能表现，并进行初步分析。</li>
+<li>在 JMeter 线程组中，可以通过调整 <code>Number of Threads</code> 和 <code>Ramp-up Period</code> 来实现阶梯式加载。</li>
+</ul>
+</li>
+<li><strong>稳定性测试：</strong>
+<ul>
+<li>在达到目标并发量后，进行长时间（例如 4-8 小时或更长）的稳定性测试。</li>
+<li>观察系统在长时间运行下的性能波动、内存泄漏、线程死锁等问题。</li>
+<li>在 JMeter 线程组中，可以通过设置 <code>Duration</code> 参数来控制测试持续时间。</li>
+</ul>
+</li>
+<li><strong>容量规划测试：</strong>
+<ul>
+<li>在稳定性测试之后，可以逐步增加负载，直至系统性能出现明显下降或崩溃，找到系统的性能拐点和最大承载能力。</li>
+<li>这有助于确定系统在不同负载下的表现，为未来的扩容提供数据支持。</li>
+</ul>
+</li>
+<li><strong>监控与分析并行：</strong>
+<ul>
+<li>在整个测试执行过程中，始终保持对被测系统和施压机的实时监控。</li>
+<li>一旦发现性能异常或瓶颈，及时暂停测试，进行问题排查和分析。</li>
+</ul>
+</li>
+</ol>
+<p>通过以上指导，您将能够有效地执行 JMeter 压力测试，并为后续的性能分析和优化提供可靠的数据支持。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="4-jmeter-测试结果分析指导">4. JMeter 测试结果分析指导<a href="#4-jmeter-测试结果分析指导" class="hash-link" aria-label="4. JMeter 测试结果分析指导的直接链接" title="4. JMeter 测试结果分析指导的直接链接">​</a></h2>
+<p>JMeter 测试执行完成后，会生成 <code>.jtl</code> 结果文件和 HTML 报告。对这些结果进行深入分析是发现性能瓶颈、评估系统性能的关键。本节将指导您如何有效地分析 JMeter 测试结果。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="41-jmeter-结果文件-jtl-分析">4.1 JMeter 结果文件 (.jtl) 分析<a href="#41-jmeter-结果文件-jtl-分析" class="hash-link" aria-label="4.1 JMeter 结果文件 (.jtl) 分析的直接链接" title="4.1 JMeter 结果文件 (.jtl) 分析的直接链接">​</a></h3>
+<p><code>.jtl</code> 文件是 JMeter 记录的原始测试结果数据，通常是 CSV 格式。它包含了每个请求的详细信息，如时间戳、响应时间、吞吐量、错误信息等。虽然不建议直接打开大型 <code>.jtl</code> 文件进行查看，但它是生成报告和进行深度分析的数据源。</p>
+<p><strong>主要字段说明：</strong></p>
+<table><thead><tr><th>字段名</th><th>描述</th></tr></thead><tbody><tr><td><code>timeStamp</code></td><td>请求发送的时间戳（毫秒）</td></tr><tr><td><code>elapsed</code></td><td>响应时间（毫秒），从请求发送到接收到完整响应的时间</td></tr><tr><td><code>label</code></td><td>请求的名称（Sampler 名称）</td></tr><tr><td><code>responseCode</code></td><td>HTTP 响应代码，如 200、404、500 等</td></tr><tr><td><code>responseMessage</code></td><td>HTTP 响应消息，如 OK、Not Found、Internal Server Error 等</td></tr><tr><td><code>threadName</code></td><td>执行请求的线程名称</td></tr><tr><td><code>dataType</code></td><td>数据类型，如 text、bin 等</td></tr><tr><td><code>success</code></td><td>请求是否成功（true/false）</td></tr><tr><td><code>failureMessage</code></td><td>如果请求失败，记录失败信息</td></tr><tr><td><code>bytes</code></td><td>接收到的字节数</td></tr><tr><td><code>sentBytes</code></td><td>发送的字节数</td></tr><tr><td><code>grpThreads</code></td><td>当前活跃的线程组中的线程数</td></tr><tr><td><code>allThreads</code></td><td>所有线程组中活跃的线程总数</td></tr><tr><td><code>URL</code></td><td>请求的 URL</td></tr><tr><td><code>Latency</code></td><td>延迟时间（毫秒），从请求发送到接收到第一个字节的时间</td></tr><tr><td><code>Connect</code></td><td>连接时间（毫秒），建立连接所需时间</td></tr></tbody></table>
+<p><strong>分析方法：</strong></p>
+<ul>
+<li><strong>导入到数据库：</strong> 对于大型 <code>.jtl</code> 文件，可以将其导入到数据库（如 MySQL、PostgreSQL）中，然后使用 SQL 查询进行数据分析和聚合。</li>
+<li><strong>使用第三方工具：</strong> 许多第三方工具（如 BlazeMeter 的 Taurus、Grafana + InfluxDB）可以直接解析 <code>.jtl</code> 文件，并提供更强大的可视化和分析功能。</li>
+<li><strong>JMeter 内置监听器：</strong> 虽然不建议在测试时开启图形化监听器，但测试结束后，可以将 <code>.jtl</code> 文件加载到 JMeter 的“聚合报告”、“图形结果”等监听器中进行查看和分析。</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="42-jmeter-html-报告分析">4.2 JMeter HTML 报告分析<a href="#42-jmeter-html-报告分析" class="hash-link" aria-label="4.2 JMeter HTML 报告分析的直接链接" title="4.2 JMeter HTML 报告分析的直接链接">​</a></h3>
+<p>JMeter 自动生成的 HTML 报告是分析测试结果最直观和常用的方式。它提供了测试概览、各项指标的趋势图和表格，帮助您快速了解系统性能。</p>
+<p><strong>报告结构：</strong></p>
+<p>HTML 报告通常包含以下几个主要部分：</p>
+<ol>
+<li><strong>Dashboard (仪表盘)：</strong>
+<ul>
+<li><strong>Test Summary (测试摘要)：</strong> 概览测试的开始/结束时间、总样本数、吞吐量 (TPS)、平均响应时间、错误率等。</li>
+<li><strong>APM (Application Performance Monitoring) 概览：</strong> 如果配置了 APM 集成，会显示相关概览信息。</li>
+</ul>
+</li>
+<li><strong>Charts (图表)：</strong>
+<ul>
+<li><strong>Over Time (随时间变化)：</strong>
+<ul>
+<li><strong>Response Times Over Time (响应时间随时间变化)：</strong> 显示平均响应时间、90% Line、95% Line、99% Line 随时间变化的趋势。这对于观察系统性能的稳定性非常重要。</li>
+<li><strong>Active Threads Over Time (活跃线程数随时间变化)：</strong> 显示测试过程中活跃线程数的变化，与您的负载策略（如阶梯式加载）进行对比。</li>
+<li><strong>Hits Per Second (每秒点击数)：</strong> 显示每秒发送的请求数。</li>
+<li><strong>Transactions Per Second (每秒事务数)：</strong> 显示每秒完成的事务数（如果使用了事务控制器）。</li>
+<li><strong>Errors Per Second (每秒错误数)：</strong> 显示每秒发生的错误数。</li>
+</ul>
+</li>
+<li><strong>Throughput (吞吐量)：</strong>
+<ul>
+<li><strong>Transactions Per Second (每秒事务数)：</strong> 同上。</li>
+<li><strong>Bytes Throughput (字节吞吐量)：</strong> 显示每秒发送和接收的字节数。</li>
+</ul>
+</li>
+<li><strong>Response Times (响应时间)：</strong>
+<ul>
+<li><strong>Response Time Percentiles (响应时间百分位)：</strong> 显示 50%、90%、95%、99% 等百分位的响应时间。90% Line 意味着 90% 的请求响应时间低于该值，这对于评估用户体验非常重要。</li>
+<li><strong>Response Time vs Threads (响应时间 vs 线程数)：</strong> 显示响应时间随活跃线程数变化的趋势。可以帮助识别性能拐点。</li>
+<li><strong>Response Time vs Request (响应时间 vs 请求)：</strong> 显示每个请求的响应时间分布。</li>
+<li><strong>Latency vs Threads (延迟 vs 线程数)：</strong> 显示延迟时间随活跃线程数变化的趋势。</li>
+</ul>
+</li>
+<li><strong>Connect Time (连接时间)：</strong> 显示连接建立时间。</li>
+</ul>
+</li>
+<li><strong>Statistics (统计信息)：</strong>
+<ul>
+<li>以表格形式汇总每个请求的统计数据，包括样本数、平均值、中位数、90% Line、95% Line、99% Line、最小值、最大值、错误率、吞吐量等。这是最常用的分析表格。</li>
+</ul>
+</li>
+<li><strong>Errors (错误)：</strong>
+<ul>
+<li>列出所有发生的错误及其错误代码和消息，以及错误发生的次数和百分比。这有助于快速定位系统中的问题。</li>
+</ul>
+</li>
+<li><strong>Top 5 Errors by Sampler (按取样器划分的前 5 个错误)：</strong>
+<ul>
+<li>显示错误发生最多的前 5 个请求。</li>
+</ul>
+</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="43-关键性能指标-kpis-分析">4.3 关键性能指标 (KPIs) 分析<a href="#43-关键性能指标-kpis-分析" class="hash-link" aria-label="4.3 关键性能指标 (KPIs) 分析的直接链接" title="4.3 关键性能指标 (KPIs) 分析的直接链接">​</a></h3>
+<p>在分析 JMeter 报告时，需要重点关注以下关键性能指标：</p>
+<ol>
+<li><strong>吞吐量 (Throughput)：</strong>
+<ul>
+<li><strong>定义：</strong> 系统在单位时间内处理的请求数或事务数（TPS/QPS）。</li>
+<li><strong>分析：</strong> 吞吐量是衡量系统处理能力的重要指标。在负载增加时，吞吐量应保持稳定或随负载增加而增加，直到达到系统瓶颈。如果吞吐量在负载未达到预期时就出现下降，说明系统存在性能问题。</li>
+</ul>
+</li>
+<li><strong>响应时间 (Response Time)：</strong>
+<ul>
+<li><strong>定义：</strong> 从请求发送到接收到完整响应所需的时间。</li>
+<li><strong>分析：</strong> 响应时间直接影响用户体验。关注平均响应时间、90% Line、95% Line、99% Line。如果响应时间过长或波动较大，说明系统处理能力不足或存在延迟。</li>
+</ul>
+</li>
+<li><strong>错误率 (Error Rate)：</strong>
+<ul>
+<li><strong>定义：</strong> 失败请求占总请求的百分比。</li>
+<li><strong>分析：</strong> 错误率是衡量系统稳定性和可用性的重要指标。在压力测试中，错误率应尽可能接近 0%。如果错误率升高，说明系统在压力下出现功能性问题或资源耗尽。</li>
+</ul>
+</li>
+<li><strong>并发用户数 (Concurrent Users/Active Threads)：</strong>
+<ul>
+<li><strong>定义：</strong> 在某一时刻同时活跃的用户或线程数。</li>
+<li><strong>分析：</strong> 结合响应时间、吞吐量和错误率，观察系统在不同并发用户数下的表现，找到系统的最大并发承载能力。</li>
+</ul>
+</li>
+<li><strong>资源利用率 (Resource Utilization)：</strong>
+<ul>
+<li><strong>定义：</strong> 被测系统（服务器、数据库、网络等）的 CPU、内存、磁盘 I/O、网络 I/O 等资源的使用情况。</li>
+<li><strong>分析：</strong> 资源利用率是定位性能瓶颈的关键。例如，CPU 持续高位（接近 100%）可能表明 CPU 是瓶颈；内存使用率持续增长可能表明存在内存泄漏；磁盘 I/O 繁忙可能表明数据库或文件操作存在问题；网络 I/O 饱和可能表明网络带宽不足。</li>
+</ul>
+</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="44-性能瓶颈定位">4.4 性能瓶颈定位<a href="#44-性能瓶颈定位" class="hash-link" aria-label="4.4 性能瓶颈定位的直接链接" title="4.4 性能瓶颈定位的直接链接">​</a></h3>
+<p>结合 JMeter 报告和监控数据，可以系统地定位性能瓶颈：</p>
+<ol>
+<li><strong>从宏观到微观：</strong>
+<ul>
+<li><strong>整体概览：</strong> 首先查看 JMeter HTML 报告的 Dashboard 和 Charts，了解整体性能趋势（响应时间、吞吐量、错误率）。</li>
+<li><strong>定位异常：</strong> 关注响应时间突然升高、吞吐量下降、错误率上升的时间点，并与活跃线程数、每秒点击数等图表进行对比，判断是否与负载增加有关。</li>
+<li><strong>请求级别分析：</strong> 查看 Statistics 表格，找出响应时间最长、错误率最高的请求，这些通常是性能瓶颈的突破口。</li>
+</ul>
+</li>
+<li><strong>结合监控数据：</strong>
+<ul>
+<li><strong>时间点对齐：</strong> 将 JMeter 报告中发现的性能异常时间点，与 Prometheus/Grafana 监控数据进行时间对齐。</li>
+<li><strong>资源关联：</strong> 观察在性能异常发生时，被测系统的 CPU、内存、磁盘 I/O、网络 I/O 等资源利用率的变化。例如，如果响应时间升高时 CPU 利用率也达到峰值，则 CPU 可能成为瓶颈。</li>
+<li><strong>组件定位：</strong> 根据资源瓶颈，进一步定位到具体的组件，例如是应用服务器、数据库、缓存、消息队列还是网络设备。</li>
+</ul>
+</li>
+<li><strong>日志分析：</strong>
+<ul>
+<li>结合 ELK Stack 或其他日志分析工具，在性能异常发生的时间段内，搜索被测系统的应用日志和系统日志。</li>
+<li>关注错误日志、警告日志、慢查询日志，这些日志通常会提供性能问题的直接线索。</li>
+<li>例如，数据库连接池耗尽、线程池溢出、频繁的 GC、SQL 慢查询等都可能在日志中体现。</li>
+</ul>
+</li>
+<li><strong>代码层面分析 (APM)：</strong>
+<ul>
+<li>如果通过上述分析仍无法定位到具体问题，可以借助 APM 工具（如 SkyWalking）进行更深层次的代码级分析。</li>
+<li>APM 工具可以追踪请求的完整调用链路，分析每个方法或组件的执行时间，从而精确找出代码中的性能热点。</li>
+</ul>
+</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="45-性能优化建议">4.5 性能优化建议<a href="#45-性能优化建议" class="hash-link" aria-label="4.5 性能优化建议的直接链接" title="4.5 性能优化建议的直接链接">​</a></h3>
+<p>在定位到性能瓶颈后，需要根据具体问题给出相应的优化建议。常见的优化方向包括：</p>
+<ul>
+<li><strong>应用层面：</strong>
+<ul>
+<li><strong>代码优化：</strong> 优化算法、减少不必要的计算、避免循环内查询数据库等。</li>
+<li><strong>并发控制：</strong> 调整线程池、连接池大小，避免资源争抢。</li>
+<li><strong>缓存：</strong> 引入或优化缓存机制，减少对数据库或外部服务的访问。</li>
+<li><strong>异步处理：</strong> 对于耗时操作，采用异步处理，提高响应速度。</li>
+<li><strong>JVM 调优：</strong> 调整 JVM 参数，优化垃圾回收机制。</li>
+</ul>
+</li>
+<li><strong>数据库层面：</strong>
+<ul>
+<li><strong>SQL 优化：</strong> 优化慢查询 SQL 语句，添加索引。</li>
+<li><strong>数据库连接池：</strong> 合理配置连接池大小。</li>
+<li><strong>读写分离/分库分表：</strong> 应对高并发读写场景。</li>
+</ul>
+</li>
+<li><strong>中间件层面：</strong>
+<ul>
+<li><strong>消息队列：</strong> 引入消息队列进行削峰填谷，解耦系统。</li>
+<li><strong>缓存：</strong> Redis、Memcached 等，减轻数据库压力。</li>
+</ul>
+</li>
+<li><strong>架构层面：</strong>
+<ul>
+<li><strong>负载均衡：</strong> 引入负载均衡器，分散请求到多台服务器。</li>
+<li><strong>服务拆分：</strong> 微服务化，降低单个服务的复杂度。</li>
+<li><strong>弹性伸缩：</strong> 根据负载自动扩缩容。</li>
+</ul>
+</li>
+<li><strong>网络层面：</strong>
+<ul>
+<li><strong>带宽升级：</strong> 增加网络带宽。</li>
+<li><strong>网络优化：</strong> 优化网络配置，减少延迟。</li>
+</ul>
+</li>
+</ul>
+<p>通过系统化的结果分析和瓶颈定位，您可以为开发团队提供有价值的优化建议，从而提升系统的整体性能和稳定性。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="5-监控工具集成与使用指导-prometheus--grafana">5. 监控工具集成与使用指导 (Prometheus + Grafana)<a href="#5-监控工具集成与使用指导-prometheus--grafana" class="hash-link" aria-label="5. 监控工具集成与使用指导 (Prometheus + Grafana)的直接链接" title="5. 监控工具集成与使用指导 (Prometheus + Grafana)的直接链接">​</a></h2>
+<p>在 10 万并发量级的压力测试中，仅仅依靠 JMeter 自身的报告是不足以全面了解系统性能的。结合专业的监控工具，如 Prometheus 和 Grafana，可以实现对被测系统和施压机的实时、多维度监控，从而更快速、准确地定位性能瓶颈。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="51-prometheus-部署与配置">5.1 Prometheus 部署与配置<a href="#51-prometheus-部署与配置" class="hash-link" aria-label="5.1 Prometheus 部署与配置的直接链接" title="5.1 Prometheus 部署与配置的直接链接">​</a></h3>
+<p>Prometheus 是一款开源的监控系统，它通过拉取（pull）的方式从配置的目标上收集指标，并提供强大的查询语言 PromQL 进行数据分析。</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="511-部署-node-exporter">5.1.1 部署 Node Exporter<a href="#511-部署-node-exporter" class="hash-link" aria-label="5.1.1 部署 Node Exporter的直接链接" title="5.1.1 部署 Node Exporter的直接链接">​</a></h4>
+<p><code>node_exporter</code> 是 Prometheus 官方提供的用于收集 Linux/Unix 系统指标的 Exporter。您需要在所有需要监控的机器上（包括被测服务器、数据库服务器、JMeter Slave 施压机等）部署 <code>node_exporter</code>。</p>
+<p><strong>安装步骤（以 Linux 为例）：</strong></p>
+<ol>
+<li><strong>下载 Node Exporter：</strong>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">wget https://github.com/prometheus/node_exporter/releases/download/v1.3.1/node_exporter-1.3.1.linux-amd64.tar.gz</span><br></span></code></pre></div></div>
+<ul>
+<li>请根据实际情况选择最新稳定版本。</li>
+</ul>
+</li>
+<li><strong>解压：</strong>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">tar -xvf node_exporter-1.3.1.linux-amd64.tar.gz</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">cd node_exporter-1.3.1.linux-amd64</span><br></span></code></pre></div></div>
+</li>
+<li><strong>运行 Node Exporter：</strong>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">./node_exporter</span><br></span></code></pre></div></div>
+<ul>
+<li>默认情况下，<code>node_exporter</code> 会在 9100 端口暴露指标。您可以通过浏览器访问 <code>http://&lt;机器IP&gt;:9100/metrics</code> 来验证是否成功。</li>
+<li>为了使其在后台运行并开机自启，建议将其配置为 Systemd 服务。</li>
+</ul>
+</li>
+</ol>
+<p><strong>配置 Systemd 服务（可选，推荐）：</strong></p>
+<ol>
+<li><strong>创建服务文件：</strong>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">sudo vim /etc/systemd/system/node_exporter.service</span><br></span></code></pre></div></div>
+</li>
+<li><strong>添加以下内容：</strong>
+<div class="language-ini codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-ini codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">[Unit]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Description=Node Exporter</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Wants=network-online.target</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">After=network-online.target</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">[Service]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">User=node_exporter</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Group=node_exporter</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Type=simple</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">ExecStart=/usr/local/bin/node_exporter</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">[Install]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">WantedBy=multi-user.target</span><br></span></code></pre></div></div>
+</li>
+<li><strong>创建用户和组：</strong>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">sudo groupadd --system node_exporter</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">sudo useradd -s /sbin/nologin --system -g node_exporter node_exporter</span><br></span></code></pre></div></div>
+</li>
+<li><strong>移动二进制文件：</strong>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">sudo cp node_exporter /usr/local/bin/</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">sudo chown node_exporter:node_exporter /usr/local/bin/node_exporter</span><br></span></code></pre></div></div>
+</li>
+<li><strong>重新加载 Systemd 并启动服务：</strong>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">sudo systemctl daemon-reload</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">sudo systemctl start node_exporter</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">sudo systemctl enable node_exporter</span><br></span></code></pre></div></div>
+</li>
+</ol>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="512-部署-prometheus-server">5.1.2 部署 Prometheus Server<a href="#512-部署-prometheus-server" class="hash-link" aria-label="5.1.2 部署 Prometheus Server的直接链接" title="5.1.2 部署 Prometheus Server的直接链接">​</a></h4>
+<p>Prometheus Server 负责收集和存储 <code>node_exporter</code> 暴露的指标。</p>
+<p><strong>安装步骤（以 Linux 为例）：</strong></p>
+<ol>
+<li><strong>下载 Prometheus：</strong>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">wget https://github.com/prometheus/prometheus/releases/download/v2.32.1/prometheus-2.32.1.linux-amd64.tar.gz</span><br></span></code></pre></div></div>
+<ul>
+<li>请根据实际情况选择最新稳定版本。</li>
+</ul>
+</li>
+<li><strong>解压：</strong>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">tar -xvf prometheus-2.32.1.linux-amd64.tar.gz</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">cd prometheus-2.32.1.linux-amd64</span><br></span></code></pre></div></div>
+</li>
+<li><strong>配置 <code>prometheus.yml</code>：</strong>
+<ul>
+<li>打开 <code>prometheus.yml</code> 文件，配置抓取目标（Scrape Targets）。</li>
+<li>在 <code>scrape_configs</code> 部分添加您的 <code>node_exporter</code> 目标：<!-- -->
+<div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">scrape_configs</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> </span><span class="token key atrule" style="color:#00a4db">job_name</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;node_exporter&#x27;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">static_configs</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> </span><span class="token key atrule" style="color:#00a4db">targets</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token string" style="color:#e3116c">&#x27;&lt;被测服务器IP&gt;:9100&#x27;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;&lt;数据库服务器IP&gt;:9100&#x27;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;&lt;JMeter Slave 1 IP&gt;:9100&#x27;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;&lt;JMeter Slave 2 IP&gt;:9100&#x27;</span><span class="token punctuation" style="color:#393A34">]</span><br></span></code></pre></div></div>
+<ul>
+<li>将 <code>&lt;机器IP&gt;</code> 替换为实际的 IP 地址。</li>
+</ul>
+</li>
+<li>保存并关闭文件。</li>
+</ul>
+</li>
+<li><strong>运行 Prometheus Server：</strong>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">./prometheus --config.file=prometheus.yml</span><br></span></code></pre></div></div>
+<ul>
+<li>默认情况下，Prometheus 会在 9090 端口启动。您可以通过浏览器访问 <code>http://&lt;Prometheus Server IP&gt;:9090</code> 来访问 Prometheus UI，并在 <code>Status</code> -&gt; <code>Targets</code> 中查看抓取状态。</li>
+<li>同样，建议将其配置为 Systemd 服务。</li>
+</ul>
+</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="52-grafana-部署与配置">5.2 Grafana 部署与配置<a href="#52-grafana-部署与配置" class="hash-link" aria-label="5.2 Grafana 部署与配置的直接链接" title="5.2 Grafana 部署与配置的直接链接">​</a></h3>
+<p>Grafana 是一款强大的数据可视化工具，可以连接多种数据源（包括 Prometheus），并创建丰富的仪表盘来展示监控数据。</p>
+<p><strong>安装步骤（以 Linux 为例）：</strong></p>
+<ol>
+<li><strong>安装 Grafana：</strong>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">sudo apt-get install -y apt-transport-https</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">sudo apt-get install -y software-properties-common wget</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">echo &quot;deb https://packages.grafana.com/oss/deb stable main&quot; | sudo tee -a /etc/apt/sources.list.d/grafana.list</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">sudo apt-get update</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">sudo apt-get install grafana</span><br></span></code></pre></div></div>
+</li>
+<li><strong>启动 Grafana Server：</strong>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">sudo systemctl daemon-reload</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">sudo systemctl start grafana-server</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">sudo systemctl enable grafana-server</span><br></span></code></pre></div></div>
+<ul>
+<li>默认情况下，Grafana 会在 3000 端口启动。您可以通过浏览器访问 <code>http://&lt;Grafana Server IP&gt;:3000</code> 来访问 Grafana UI。默认用户名/密码是 <code>admin/admin</code>。</li>
+</ul>
+</li>
+</ol>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="521-配置-prometheus-数据源">5.2.1 配置 Prometheus 数据源<a href="#521-配置-prometheus-数据源" class="hash-link" aria-label="5.2.1 配置 Prometheus 数据源的直接链接" title="5.2.1 配置 Prometheus 数据源的直接链接">​</a></h4>
+<ol>
+<li>登录 Grafana UI，点击左侧菜单栏的 <strong>Configuration (齿轮图标)</strong> -&gt; <strong>Data Sources (数据源)</strong>。</li>
+<li>点击 <strong>Add data source (添加数据源)</strong>，选择 <strong>Prometheus</strong>。</li>
+<li>在 <strong>HTTP</strong> 部分，将 <strong>URL</strong> 设置为您的 Prometheus Server 地址，例如 <code>http://localhost:9090</code> 或 <code>http://&lt;Prometheus Server IP&gt;:9090</code>。</li>
+<li>点击 <strong>Save &amp; Test (保存并测试)</strong>，如果显示“Data source is working”，则表示配置成功。</li>
+</ol>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="522-导入或创建仪表盘">5.2.2 导入或创建仪表盘<a href="#522-导入或创建仪表盘" class="hash-link" aria-label="5.2.2 导入或创建仪表盘的直接链接" title="5.2.2 导入或创建仪表盘的直接链接">​</a></h4>
+<p>Grafana 提供了丰富的仪表盘模板，您可以导入现有的模板，也可以根据需求自定义仪表盘。</p>
+<ol>
+<li><strong>导入现有仪表盘：</strong>
+<ul>
+<li>访问 Grafana Labs 官方网站（<code>https://grafana.com/grafana/dashboards/</code>），搜索 <code>Node Exporter</code> 或其他您需要的仪表盘。</li>
+<li>找到合适的仪表盘后，复制其 ID。例如，Node Exporter Full 的 ID 是 <code>1860</code>。</li>
+<li>在 Grafana UI，点击左侧菜单栏的 <strong>Dashboards (仪表盘图标)</strong> -&gt; <strong>Import (导入)</strong>。</li>
+<li>在 <strong>Import via grafana.com</strong> 字段中输入仪表盘 ID，点击 <strong>Load (加载)</strong>。</li>
+<li>选择 Prometheus 数据源，点击 <strong>Import (导入)</strong>。</li>
+</ul>
+</li>
+<li><strong>创建自定义仪表盘：</strong>
+<ul>
+<li>点击左侧菜单栏的 <strong>Dashboards (仪表盘图标)</strong> -&gt; <strong>New dashboard (新建仪表盘)</strong> -&gt; <strong>Add new panel (添加新面板)</strong>。</li>
+<li>在 <strong>Query (查询)</strong> 选项卡中，选择 Prometheus 数据源，并使用 PromQL 编写查询语句来获取您需要的指标。例如，查询 CPU 使用率：<code>100 - (avg by (instance) (rate(node_cpu_seconds_total{mode=&quot;idle&quot;}[5m])) * 100)</code>。</li>
+<li>在 <strong>Visualization (可视化)</strong> 选项卡中，选择合适的图表类型（如 Graph、Stat、Gauge 等）来展示数据。</li>
+<li>重复以上步骤，添加多个面板，构建您的监控仪表盘。</li>
+</ul>
+</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="53-jmeter-与监控工具的集成">5.3 JMeter 与监控工具的集成<a href="#53-jmeter-与监控工具的集成" class="hash-link" aria-label="5.3 JMeter 与监控工具的集成的直接链接" title="5.3 JMeter 与监控工具的集成的直接链接">​</a></h3>
+<p>除了系统层面的监控，您还可以将 JMeter 的测试结果实时发送到 Prometheus/Grafana，实现更全面的监控。</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="531-使用-jmeter-backend-listener">5.3.1 使用 JMeter Backend Listener<a href="#531-使用-jmeter-backend-listener" class="hash-link" aria-label="5.3.1 使用 JMeter Backend Listener的直接链接" title="5.3.1 使用 JMeter Backend Listener的直接链接">​</a></h4>
+<p>JMeter 提供了 Backend Listener（后端监听器），可以将测试结果实时发送到外部数据库或时序数据库，如 InfluxDB。然后，Grafana 可以连接 InfluxDB 进行数据可视化。</p>
+<p><strong>步骤：</strong></p>
+<ol>
+<li><strong>部署 InfluxDB：</strong> 在一台服务器上部署 InfluxDB 时序数据库。</li>
+<li><strong>部署 Grafana：</strong> 确保 Grafana 已部署并可访问。</li>
+<li><strong>JMeter 配置：</strong>
+<ul>
+<li>在您的 JMeter 测试计划中，右键点击 <strong>Test Plan (测试计划)</strong> -&gt; <strong>Add (添加)</strong> -&gt; <strong>Listener (监听器)</strong> -&gt; <strong>Backend Listener (后端监听器)</strong>。</li>
+<li>在 Backend Listener 配置中，将 <strong>Backend Listener implementation (后端监听器实现)</strong> 选择为 <code>InfluxdbBackendListenerClient</code>。</li>
+<li>配置 InfluxDB 的连接信息，包括 <code>influxdbUrl</code>、<code>application</code>、<code>measurement</code> 等。</li>
+<li><strong>influxdbUrl：</strong> <code>http://&lt;InfluxDB IP&gt;:8086/write?db=jmeter</code></li>
+<li><strong>application：</strong> 您的应用名称，例如 <code>my_app</code>。</li>
+<li><strong>measurement：</strong> 数据存储的表名，例如 <code>jmeter_metrics</code>。</li>
+</ul>
+</li>
+<li><strong>Grafana 配置：</strong>
+<ul>
+<li>在 Grafana 中添加 InfluxDB 数据源。</li>
+<li>导入或创建仪表盘，使用 InfluxQL 查询 JMeter 发送的指标，例如：<!-- -->
+<ul>
+<li>查询平均响应时间：`SELECT mean(&quot;value&quot;) FROM &quot;jmeter_metrics&quot; WHERE &quot;application&quot; = &#x27;my_app&#x27; AND &quot;stat&quot; = &#x27;avg&#x27; AND &quot;transaction&quot; = &#x27;all&#x27; GROUP BY time($__interval) fill(null)``</li>
+<li>查询 TPS：<code>SELECT sum(&quot;count&quot;) / $__interval FROM &quot;jmeter_metrics&quot; WHERE &quot;application&quot; = &#x27;my_app&#x27; AND &quot;stat&quot; = &#x27;ok&#x27; AND &quot;transaction&quot; = &#x27;all&#x27; GROUP BY time($__interval) fill(null)</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="54-监控指标与-promql-示例">5.4 监控指标与 PromQL 示例<a href="#54-监控指标与-promql-示例" class="hash-link" aria-label="5.4 监控指标与 PromQL 示例的直接链接" title="5.4 监控指标与 PromQL 示例的直接链接">​</a></h3>
+<p>以下是一些常用的监控指标及其 PromQL 查询示例，您可以在 Grafana 中使用这些查询来构建仪表盘：</p>
+<table><thead><tr><th>监控对象</th><th>指标名称</th><th>PromQL 示例</th><th>描述</th></tr></thead><tbody><tr><td><strong>系统</strong></td><td>CPU 使用率</td><td><code>100 - (avg by (instance) (rate(node_cpu_seconds_total{mode=&quot;idle&quot;}[5m])) * 100)</code></td><td>各实例的 CPU 平均使用率</td></tr><tr><td></td><td>内存使用率</td><td><code>(node_memory_MemTotal_bytes - node_memory_MemFree_bytes - node_memory_Buffers_bytes - node_memory_Cached_bytes) / node_memory_MemTotal_bytes * 100</code></td><td>各实例的内存使用率</td></tr><tr><td></td><td>磁盘 I/O 读速率</td><td><code>rate(node_disk_read_bytes_total[5m])</code></td><td>各实例的磁盘每秒读取字节数</td></tr><tr><td></td><td>磁盘 I/O 写速率</td><td><code>rate(node_disk_written_bytes_total[5m])</code></td><td>各实例的磁盘每秒写入字节数</td></tr><tr><td></td><td>网络接收速率</td><td><code>rate(node_network_receive_bytes_total[5m])</code></td><td>各实例的网络每秒接收字节数</td></tr><tr><td></td><td>网络发送速率</td><td><code>rate(node_network_transmit_bytes_total[5m])</code></td><td>各实例的网络每秒发送字节数</td></tr><tr><td><strong>JMeter</strong></td><td>活跃线程数</td><td><code>jmeter_active_threads</code></td><td>JMeter 活跃线程数（如果使用 InfluxdbBackendListenerClient）</td></tr><tr><td></td><td>平均响应时间</td><td><code>jmeter_response_time_avg</code></td><td>JMeter 请求的平均响应时间（如果使用 InfluxdbBackendListenerClient）</td></tr><tr><td></td><td>TPS</td><td><code>jmeter_tps</code></td><td>JMeter 每秒事务数（如果使用 InfluxdbBackendListenerClient）</td></tr></tbody></table>
+<p>通过 Prometheus 和 Grafana 的集成，您将能够获得压力测试过程中系统性能的全面视图，从而更有效地进行性能分析和瓶颈定位。</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-tags-row"><div class="col"><b>标签：</b><ul class="tags_jXut padding--none margin-left--sm"><li class="tag_QGVx"><a rel="tag" class="tag_zVej tagRegular_sFm0" href="/tags/随笔">随笔</a></li><li class="tag_QGVx"><a rel="tag" class="tag_zVej tagRegular_sFm0" href="/tags/压测">压测</a></li></ul></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="文件选项卡"><a class="pagination-nav__link pagination-nav__link--prev" href="/category/个人感想"><div class="pagination-nav__sublabel">上一页</div><div class="pagination-nav__label">个人感想</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/thoughts/"><div class="pagination-nav__sublabel">下一页</div><div class="pagination-nav__label">我的第二篇随笔</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#1-jmeter-分布式环境搭建指导" class="table-of-contents__link toc-highlight">1. JMeter 分布式环境搭建指导</a><ul><li><a href="#11-分布式测试原理" class="table-of-contents__link toc-highlight">1.1 分布式测试原理</a></li><li><a href="#12-环境准备" class="table-of-contents__link toc-highlight">1.2 环境准备</a></li><li><a href="#13-搭建步骤" class="table-of-contents__link toc-highlight">1.3 搭建步骤</a></li><li><a href="#14-验证分布式环境" class="table-of-contents__link toc-highlight">1.4 验证分布式环境</a></li><li><a href="#15-常见问题与排查" class="table-of-contents__link toc-highlight">1.5 常见问题与排查</a></li></ul></li><li><a href="#2-jmeter-脚本创建与调试指导" class="table-of-contents__link toc-highlight">2. JMeter 脚本创建与调试指导</a><ul><li><a href="#21-脚本录制与编写" class="table-of-contents__link toc-highlight">2.1 脚本录制与编写</a></li><li><a href="#22-脚本增强" class="table-of-contents__link toc-highlight">2.2 脚本增强</a></li><li><a href="#23-脚本调试" class="table-of-contents__link toc-highlight">2.3 脚本调试</a></li></ul></li><li><a href="#3-jmeter-测试执行指导" class="table-of-contents__link toc-highlight">3. JMeter 测试执行指导</a><ul><li><a href="#31-测试前检查清单" class="table-of-contents__link toc-highlight">3.1 测试前检查清单</a></li><li><a href="#32-命令行模式执行测试" class="table-of-contents__link toc-highlight">3.2 命令行模式执行测试</a></li><li><a href="#33-分布式模式执行测试" class="table-of-contents__link toc-highlight">3.3 分布式模式执行测试</a></li><li><a href="#34-测试执行策略" class="table-of-contents__link toc-highlight">3.4 测试执行策略</a></li></ul></li><li><a href="#4-jmeter-测试结果分析指导" class="table-of-contents__link toc-highlight">4. JMeter 测试结果分析指导</a><ul><li><a href="#41-jmeter-结果文件-jtl-分析" class="table-of-contents__link toc-highlight">4.1 JMeter 结果文件 (.jtl) 分析</a></li><li><a href="#42-jmeter-html-报告分析" class="table-of-contents__link toc-highlight">4.2 JMeter HTML 报告分析</a></li><li><a href="#43-关键性能指标-kpis-分析" class="table-of-contents__link toc-highlight">4.3 关键性能指标 (KPIs) 分析</a></li><li><a href="#44-性能瓶颈定位" class="table-of-contents__link toc-highlight">4.4 性能瓶颈定位</a></li><li><a href="#45-性能优化建议" class="table-of-contents__link toc-highlight">4.5 性能优化建议</a></li></ul></li><li><a href="#5-监控工具集成与使用指导-prometheus--grafana" class="table-of-contents__link toc-highlight">5. 监控工具集成与使用指导 (Prometheus + Grafana)</a><ul><li><a href="#51-prometheus-部署与配置" class="table-of-contents__link toc-highlight">5.1 Prometheus 部署与配置</a></li><li><a href="#52-grafana-部署与配置" class="table-of-contents__link toc-highlight">5.2 Grafana 部署与配置</a></li><li><a href="#53-jmeter-与监控工具的集成" class="table-of-contents__link toc-highlight">5.3 JMeter 与监控工具的集成</a></li><li><a href="#54-监控指标与-promql-示例" class="table-of-contents__link toc-highlight">5.4 监控指标与 PromQL 示例</a></li></ul></li></ul></div></div></div></div></main></div></div></div></div>
+</body>
+</html>
